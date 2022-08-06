@@ -1,17 +1,14 @@
 
+import java.rmi.server.UnicastRemoteObject;
+import java.rmi.Remote;
+
 // import Server.java.Hello;
 
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-import java.rmi.server.UnicastRemoteObject;
-import java.rmi.RemoteException;
 // import java.rmi.RemoteException;
 
 public class Server implements Hi {
-    public Server() {
-    }
-
-    @Override
     public String sayHi() {
         return "hey dude ^_^";
     }
@@ -19,7 +16,7 @@ public class Server implements Hi {
     public static void main(String[] args) {
         try {
             Server obj = new Server();
-            Hi stub = (Hi) UnicastRemoteObject.exportObject(obj, 0);
+            Hi stub = (Hi) UnicastRemoteObject.exportObject((Remote) obj, 0);
 
             Registry registry = LocateRegistry.getRegistry();
             registry.bind("Hi", stub);

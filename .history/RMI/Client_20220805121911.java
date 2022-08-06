@@ -1,6 +1,6 @@
-import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.LocalRegistry;
 import java.rmi.registry.Registry;
-// import Server.java.Hi;
+import Server.java.Hi;
 
 public class Client {
     private Client() {
@@ -10,7 +10,7 @@ public class Client {
         String host = (args.length < 1) ? null : args[0];
         try {
             Registry registry = LocateRegistry.getRegistry(host);
-            Hi stub = (Hi) registry.lookup("Hi");
+            Hi stub = (Hi) registry.lookup("Hello");
             String response = stub.sayHi();
             System.out.println("response: " + response);
         } catch (Exception e) {

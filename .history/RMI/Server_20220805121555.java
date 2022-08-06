@@ -1,17 +1,13 @@
 
+import java.rmi.server.UnicastRemoteObject;
+
 // import Server.java.Hello;
 
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-import java.rmi.server.UnicastRemoteObject;
-import java.rmi.RemoteException;
 // import java.rmi.RemoteException;
 
 public class Server implements Hi {
-    public Server() {
-    }
-
-    @Override
     public String sayHi() {
         return "hey dude ^_^";
     }
